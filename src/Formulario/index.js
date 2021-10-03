@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import ResultadoCalculo from './ResultadoCalculo';
+import styles from './style';
 
 export default function Formulario() {
     
@@ -44,44 +45,52 @@ export default function Formulario() {
     }
 
     return(
-        <View>
-            <View>
-                <Text>Valor do álcool</Text>
+        <View style={styles.formContext}>
+            <View style={styles.form}>
+                <Text style={styles.formLabel}>Valor do álcool</Text>
                 <TextInput
+                    style={styles.input}
                     onChangeText={setValorAlc}
                     value={valor_alc}
                     placeholder="Ex. 4.35"
                     keyboardType="numeric"
                 ></TextInput>
 
-                <Text>Valor da gasolina</Text>
+                <Text style={styles.formLabel}>Valor da gasolina</Text>
                 <TextInput
+                    style={styles.input}
                     onChangeText={setValorGas}
                     value={valor_gas}
                     placeholder="Ex. 3.50"
                     keyboardType="numeric"
                 ></TextInput>
 
-                <Text>Consumo no álcool</Text>
+                <Text style={styles.formLabel}>Consumo no álcool</Text>
                 <TextInput
+                    style={styles.input}
                     onChangeText={setConsuAlc}
                     value={consu_alc}
                     placeholder="Ex. 9.7"
                     keyboardType="numeric"
                 ></TextInput>
 
-                <Text>Consumo na gasolina</Text>
+                <Text style={styles.formLabel}>Consumo na gasolina</Text>
                 <TextInput
+                    style={styles.input}
                     onChangeText={setConsuGas}
                     value={consu_gas}
                     placeholder="Ex. 8.5"
                     keyboardType="numeric"
                 ></TextInput>
 
-                <Button 
-                    onPress={validaVantagem}
-                    title={textoBotao} 
-                />
+                <TouchableOpacity
+                    style={styles.buttonCalculator}
+                    onPress={() => {
+                        validaVantagem()
+                    }}
+                >
+                    <Text style={styles.formLabel}>{textoBotao}</Text>
+                </TouchableOpacity>
             </View>
 
             <ResultadoCalculo
